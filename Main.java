@@ -1,29 +1,42 @@
 import java.util.ArrayList;
 
 public class Main {
+    // Declaración del ArrayList inventario
+    private static ArrayList<String> inventario = new ArrayList<>();
+
     public static void main(String[] args) {
-        ArrayList<String> inventario = new ArrayList<>();
-        
-        inventario.add("Espada de hierro");
-        inventario.add("Poción curativa");
-        inventario.add("Mapa del tesoro");
-        
-        // 1. Recorrer la lista con un ciclo for tradicional desde 0 hasta inventario.size() usando get(indice)
-        System.out.println("--- Inventario Inicial ---");
+        // Agregando al menos cuatro objetos utilizando el método propio (sin duplicar lógica en main)
+        agregarObjeto("Espada de hierro");
+        agregarObjeto("Poción curativa");
+        agregarObjeto("Mapa del tesoro");
+        agregarObjeto("Escudo de madera");
+
+        // Mostrar el inventario inicial
+        System.out.println("=== Inventario Inicial ===");
+        mostrarInventario();
+
+        // Retirar un objeto utilizando el método propio
+        retirarObjeto("Poción curativa");
+
+        // Volver a mostrar el inventario actualizado
+        System.out.println("\n=== Inventario Tras Retirar un Objeto ===");
+        mostrarInventario();
+    }
+
+    // Método propio para agregar objetos usando add()
+    public static void agregarObjeto(String objeto) {
+        inventario.add(objeto);
+    }
+
+    // Método propio para recorrer la lista y mostrar sus elementos
+    public static void mostrarInventario() {
         for (int i = 0; i < inventario.size(); i++) {
             System.out.println("Índice " + i + ": " + inventario.get(i));
         }
-        
-        // 2. Reemplazar el segundo elemento usando set(1, nuevoValor)
-        inventario.set(1, "Escudo de acero");
-        
-        // 3. Comprobar que el tamaño continúe siendo 3 usando size()
-        System.out.println("\nComprobación de tamaño tras set(): " + inventario.size());
-        
-        // 4. Recorrer la lista en sentido inverso desde inventario.size() - 1 hasta 0 usando get(indice)
-        System.out.println("\n--- Inventario en Sentido Inverso ---");
-        for (int i = inventario.size() - 1; i >= 0; i--) {
-            System.out.println("Índice " + i + ": " + inventario.get(i));
-        }
+    }
+
+    // Método propio para retirar objetos usando remove()
+    public static void retirarObjeto(String objeto) {
+        inventario.remove(objeto);
     }
 }
